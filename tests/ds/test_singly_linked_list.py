@@ -107,3 +107,47 @@ class TestSinglyLinkedList(unittest.TestCase):
         data = self.list.remove(2)
         self.assertEqual(data, 7)
         self.assertEqual([x for x in self.list], [5, 10, 8, 1])
+
+    def test_remove_at_index_low(self):
+        _list = SinglyLinkedList()
+        with self.assertRaises(IndexError):
+            _list.remove(-1)
+
+    def test_remove_at_index_high(self):
+        _list = SinglyLinkedList()
+        with self.assertRaises(IndexError):
+            _list.remove(10)
+
+    def test_remove_at_index_last(self):
+        data = self.list.remove(4)
+        self.assertEqual(data, 1)
+        self.assertEqual([x for x in self.list], [5, 10, 7, 8])
+
+    def test_remove_at_index_first(self):
+        data = self.list.remove(0)
+        self.assertEqual(data, 5)
+        self.assertEqual([x for x in self.list], [10, 7, 8, 1])
+
+    def test_clear(self):
+        self.list.clear()
+        self.assertEqual([x for x in self.list], [])
+
+    def test_peek_at_index(self):
+        data = self.list.peek(2)
+        self.assertEqual(data, 7)
+
+    def test_peek_at_index_first(self):
+        data = self.list.peek(0)
+        self.assertEqual(data, 5)
+
+    def test_peek_at_index_last(self):
+        data = self.list.peek(4)
+        self.assertEqual(data, 1)
+
+    def test_peek_at_index_low(self):
+        with self.assertRaises(IndexError):
+            self.list.peek(-1)
+
+    def test_peek_at_index_high(self):
+        with self.assertRaises(IndexError):
+            self.list.peek(10)

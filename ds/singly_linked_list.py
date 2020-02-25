@@ -61,9 +61,9 @@ class SinglyLinkedList:
         if index < 0 or index > self.size:
             raise IndexError()
         if index == 0:
-            self.remove_first()
+            return self.remove_first()
         elif index == self.size:
-            self.remove_last()
+            return self.remove_last()
         else:
             position: int = 1
             trav: 'Node' = self.head
@@ -79,7 +79,29 @@ class SinglyLinkedList:
         self.size -= 1
 
     def peek(self, index):
-        pass
+        if index < 0 or index > self.size:
+            raise IndexError()
+        if index == 0:
+            return self.peek_first()
+        elif index == self.size:
+            return self.peek_last()
+        else:
+            position = 0
+            trav = self.head
+            while trav:
+                if position == index:
+                    return trav.data
+                trav = trav.next
+                position += 1
+
+    def clear(self):
+        trav = self.head
+        while trav:
+            node = trav.next
+            trav.next = None
+            trav = node
+        self.head = None
+        self.tail = None
 
     def remove_last(self):
         if self.is_empty:
@@ -87,8 +109,10 @@ class SinglyLinkedList:
         trav = self.head
         while trav:
             if trav.next == self.tail:
+                data = self.tail.data
                 trav.next = None
                 self.tail = trav
+                return data
             trav = trav.next
         self.size -= 1
 
@@ -97,11 +121,13 @@ class SinglyLinkedList:
             raise RuntimeError('Empty list')
         #  get the next node
         node = self.head.next
+        data = self.head.data
         #  remove all the first node references
         self.head.next = None
         #  set new head
         self.head = node
         self.size -= 1
+        return data
 
     @property
     def is_empty(self):
