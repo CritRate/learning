@@ -15,6 +15,18 @@ class TestSinglyLinkedList(unittest.TestCase):
 
     def test_length_of_list(self):
         self.assertEqual(len(self.list), 5)
+        self.list.remove_last()
+        self.assertEqual(len(self.list), 4)
+        self.list.remove_first()
+        self.assertEqual(len(self.list), 3)
+        self.list.remove(1)
+        self.assertEqual(len(self.list), 2)
+        self.list.add_last(2)
+        self.assertEqual(len(self.list), 3)
+        self.list.add_last(20)
+        self.assertEqual(len(self.list), 4)
+        self.list.add(50, 3)
+        self.assertEqual(len(self.list), 5)
 
     def test_str_of_list(self):
         self.assertEqual(str(self.list), '[5, 10, 7, 8, 1]')
@@ -151,3 +163,20 @@ class TestSinglyLinkedList(unittest.TestCase):
     def test_peek_at_index_high(self):
         with self.assertRaises(IndexError):
             self.list.peek(10)
+
+    def test_index_of(self):
+        index = self.list.indexof(8)
+        self.assertEqual(index, 3)
+
+    def test_index_of_not_in_list(self):
+        index = self.list.indexof(100)
+        self.assertEqual(index, -1)
+
+    def test_index_of_head(self):
+        index = self.list.indexof(5)
+        self.assertEqual(index, 0)
+
+    def test_index_of_empty(self):
+        _list = SinglyLinkedList()
+        index = _list.indexof(4)
+        self.assertEqual(index, -1)
