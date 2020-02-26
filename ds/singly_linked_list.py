@@ -8,6 +8,7 @@ class Node:
 
     def __init__(self, data: object, next: 'Node' = None):
         """
+        Create Node
 
         :param object data: Data saved in the node
         :param Node next: Reference to the next node
@@ -22,6 +23,9 @@ class SinglyLinkedList:
     """
 
     def __init__(self):
+        """
+        Create Singly linked list
+        """
         self.size: int = 0
         # Start of the list
         self.head: Optional['Node'] = None
@@ -63,7 +67,7 @@ class SinglyLinkedList:
         :param index: Specifies at what index to add the value
         :return:
         """
-        if index > self.size or index < 0:
+        if index < 0 or index > self.size:
             raise IndexError()
         if index == 0:
             self.add_first(data)
@@ -242,8 +246,7 @@ class SinglyLinkedList:
             else:
                 output += f'{str(trav.data)}'
             trav = trav.next
-        output += ']'
-        return output
+        return output + ']'
 
     def __len__(self):
         return self.size
