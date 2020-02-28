@@ -102,6 +102,12 @@ class SinglyLinkedList:
                 self.tail = trav
                 self.size -= 1
                 return data
+            elif trav == self.tail:
+                removed = self.tail.data
+                self.head = None
+                self.tail = None
+                self.size -= 1
+                return removed
             trav = trav.next
 
     def remove_first(self):

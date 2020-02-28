@@ -54,7 +54,11 @@ class TestSinglyLinkedList(unittest.TestCase):
 
     def test_remove_last(self):
         self.list.remove_last()
-        self.assertEqual([x for x in self.list], [5, 10, 7, 8])
+        self.list.remove_last()
+        self.list.remove_last()
+        self.list.remove_last()
+        self.list.remove_last()
+        self.assertEqual([x for x in self.list], [])
 
     def test_remove_last_from_empty(self):
         empty_list = SinglyLinkedList()
