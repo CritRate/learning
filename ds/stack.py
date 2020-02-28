@@ -1,29 +1,21 @@
-from typing import Iterable
+from typing import Iterable, Optional
 
 from .singly_linked_list import SinglyLinkedList
 
 
 class Stack:
 
-    def __init__(self):
+    def __init__(self, data: Optional[Iterable] = None):
         """
         Create Stack
+
+        :param Iterable data: Data to add to the list
         """
+
         self.list = SinglyLinkedList()
-
-    @classmethod
-    def with_starting_values(cls, data: Iterable):
-        """
-        Create Stack with starting values from Iterable source
-
-        :param Iterable data: Iterable to populate the stack with.
-        :return: Stack
-        :rtype: Stack
-        """
-        stack = cls()
-        for value in data:
-            stack.push(value)
-        return stack
+        if data:
+            for value in data:
+                self.list.add_first(data=value)
 
     def push(self, data: object):
         """

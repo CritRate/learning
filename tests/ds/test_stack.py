@@ -24,7 +24,7 @@ class TestStack(unittest.TestCase):
         self.assertEqual(len(self.list), 2)
 
     def test_stack_with_starting_data(self):
-        _list = Stack.with_starting_values([5, 4, 3])
+        _list = Stack([5, 4, 3])
         self.assertEqual([x for x in _list], [3, 4, 5])
         _list.push(1)
         self.assertEqual([x for x in _list], [1, 3, 4, 5])
