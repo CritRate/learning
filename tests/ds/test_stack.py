@@ -22,6 +22,8 @@ class TestStack(unittest.TestCase):
         self.list.push(1)
         self.list.push(2)
         self.assertEqual(len(self.list), 2)
+        _list = Stack([1, 2, 3, 4, 5])
+        self.assertEqual(len(_list), 5)
 
     def test_stack_with_starting_data(self):
         _list = Stack([5, 4, 3])
