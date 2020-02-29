@@ -9,13 +9,13 @@ class Stack:
         """
         Create Stack
 
-        :param Iterable data: Data to add to the list
+        :param Iterable data: Data to add to the stack.
         """
 
         self.list = SinglyLinkedList()
         if data:
             for value in data:
-                self.list.add_first(data=value)
+                self.list.add_first(value)
 
     def push(self, data: object):
         """
